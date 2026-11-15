@@ -29,7 +29,7 @@ main{padding:24px clamp(16px,3vw,40px) 36px;max-width:1500px;width:100%;margin:a
 .eb{color:var(--cy);font-size:11px;letter-spacing:.2em;font-weight:700}
 h1{font-size:clamp(26px,3.2vw,36px);letter-spacing:.02em;margin:2px 0;text-transform:uppercase}
 .sub{color:var(--mu)}
-.ecg{width:150px;height:26px;display:block;margin-top:6px}.ecg path{fill:none;stroke:var(--cy);stroke-width:2;stroke-dasharray:100;animation:dash 2.6s linear infinite;filter:drop-shadow(0 0 3px var(--cy))}
+.ecg{width:100%;height:26px;display:block;margin-top:6px}.ecg path{fill:none;stroke:var(--cy);stroke-width:2;stroke-dasharray:100;animation:dash 2.6s linear infinite;filter:drop-shadow(0 0 3px var(--cy))}
 @keyframes dash{from{stroke-dashoffset:100}to{stroke-dashoffset:-100}}
 @keyframes pl{50%{box-shadow:0 0 14px var(--bd)}}
 .acts{display:flex;gap:10px;align-items:center}
@@ -52,7 +52,7 @@ canvas{width:100%;height:100%;display:block}.cw{height:240px}
 .row{display:flex;justify-content:space-between;gap:10px;padding:9px 0;border-bottom:1px solid #12314d;font-size:14px}.row:last-child{border:0}.row span:first-child{color:var(--mu)}
 .ring{display:flex;align-items:center;gap:14px;border:1px solid #1d6b57;background:#0a2a2a;padding:12px;margin-bottom:10px}.ring.wn{border-color:#6b5a1d;background:#2a240a}.ring.bd{border-color:#7a2433;background:#2b0f19}
 .ring svg{width:72px;height:72px;flex:none}.ring strong{display:block;font-size:20px;letter-spacing:.1em}.ring small{color:var(--mu)}
-.bn{display:none;margin-bottom:14px;padding:10px 14px;border:1px solid var(--bd);background:#2b0f19;color:#ffb3bd;animation:pl 1.6s infinite;font-weight:600;letter-spacing:.05em}.bn.wn{border-color:var(--wn);background:#2a240a;color:#ffe3a1}
+.bn{display:none;margin-bottom:14px;padding:10px 14px;border:1px solid var(--bd);background:#2b0f19;color:#ffb3bd;animation:pl 1.6s infinite;font-weight:600;letter-spacing:.05em}.bn.wn{border-color:#6b5a1d;background:#2a240a;color:#ffe3a1}
 .radar{width:100%;max-height:270px}
 .al{display:flex;gap:10px;padding:10px 0;border-bottom:1px solid #12314d;align-items:flex-start}.al:last-child{border:0}.al i{width:9px;height:9px;border-radius:50%;margin-top:6px;flex:none}.al div{flex:1}.al strong{display:block;font-size:14px}.al small{color:var(--mu);font-size:12px}
 .i-ok{background:var(--ok)}.i-info{background:var(--bl)}.i-wn{background:var(--wn)}.i-bd{background:var(--bd);box-shadow:0 0 8px var(--bd)}
@@ -74,7 +74,8 @@ a{color:var(--cy)}
 
 :root{--bg:#06101f;--ln:#17304d;--cy:#38bdf8;--ok:#34d399;--wn:#facc15;--og:#fb923c;--bd:#f87171}
 body{background:var(--bg);font:400 15px/1.45 "IBM Plex Sans",system-ui,sans-serif}
-body.scan:after,.ecg{display:none}
+body.scan:after{display:none}
+.ecg{width:100%}
 .mono{font-family:"IBM Plex Mono",ui-monospace,monospace}
 h1{text-transform:none;font-weight:600}h1,h2,h3,.eb,.nl{letter-spacing:0}
 .card{border-radius:3px;box-shadow:none;background:#0a182c;border:1px solid var(--ln)}.card.sel{border-color:var(--cy)}
@@ -136,7 +137,7 @@ aside{height:calc(100vh - 28px);top:14px;background:#fbfcfd}
 .dev b{color:#1b2b38;letter-spacing:.06em;margin-right:8px}.dm{display:flex;gap:14px;align-items:center;flex-wrap:wrap}
 .led{display:inline-block;width:8px;height:8px;border-radius:50%;background:#2fb67e;box-shadow:0 0 0 2px #dff3ea;margin-right:5px}.led.w{background:#e0a21a;box-shadow:0 0 0 2px #fbefd0}
 .ecg,.ridge{display:block;border:1px solid #f0cfd4;border-radius:6px;background:linear-gradient(#f9dfe2 1px,transparent 1px) 0 0/100% 6px,linear-gradient(90deg,#f9dfe2 1px,transparent 1px) 0 0/6px 100%,#fffbfb}
-.ecg{width:min(100%,380px);height:38px;margin-top:10px}.ecg path{stroke:#168a5c;stroke-width:1.8;filter:none}
+.ecg{width:100%;height:38px;margin-top:10px}.ecg path{stroke:#168a5c;stroke-width:1.8;filter:none}
 .card{border-color:#d3dee6;box-shadow:0 1px 0 #fff inset,0 1px 3px rgba(30,56,74,.06)}
 #cards .sv,#hStats .sv{background:#f6f9fb;border:1px solid #e0e8ee;border-radius:6px;padding:6px 10px;box-shadow:inset 0 1px 2px rgba(30,56,74,.06);font-size:32px}
 .card.cr[data-pick]{cursor:pointer}.card.cr[data-pick]:hover,.card.cr[data-pick]:focus-visible{border-color:#8db9d0;box-shadow:0 0 0 2px #d5e8f2;outline:0}
@@ -165,6 +166,7 @@ aside{height:calc(100vh - 28px);top:14px;background:#fbfcfd}
 #lang span.on{background:var(--cy,#1677a8);color:#fff}
 #lang:hover{border-color:#9bbdce}
 #lang:focus-visible{outline:2px solid var(--cy,#1677a8);outline-offset:2px}
+#cs{display:none}
 </style></head>
 <body>
 <div class="shell">
@@ -178,6 +180,8 @@ aside{height:calc(100vh - 28px);top:14px;background:#fbfcfd}
  <button class="nav" data-v="history"><i>◷</i>Historical Data</button>
  <div class="nl">ASTRA PLATFORM</div>
  <button class="nav" data-v="beyond"><i>◇</i>Beyond Space</button>
+ <div class="nl">ASTRA'S TEAM</div>
+ <button class="nav" data-v="team"><i>👥</i>ASTRA's team</button>
  <div class="nl">SYSTEM</div>
  <button class="nav" data-v="sources"><i>❖</i>NASA Sources</button>
  <button class="nav" data-v="settings"><i>⌘</i>Settings</button>
@@ -241,6 +245,42 @@ aside{height:calc(100vh - 28px);top:14px;background:#fbfcfd}
  <article class="card" style="margin-top:14px"><div class="ct"><div><h2>Resulting analysis</h2><p>PREDICTED SCENARIO · not a diagnosis, not validated</p></div><span id="scLv"></span></div><div id="scOut"></div></article>
 </section>
 <section class="view" id="v-beyond"></section>
+
+<section class="view" id="v-team">
+ <article class="card">
+  <div class="ct">
+   <div><h2>Project Team</h2><p>Biomedical engineering students in charge of this project</p></div>
+   <span class="tag">TEAM</span>
+  </div>
+  <div class="g g2" style="margin-top:16px;">
+   <!-- Member 1 -->
+   <div style="display:flex;align-items:center;gap:16px;background:rgba(255,255,255,0.02);border:1px solid var(--ln);padding:16px;border-radius:6px;">
+    <img src="Valeria.png" alt="Member 1" style="width:80px;height:80px;border-radius:50%;object-fit:cover;border:2px solid var(--cy);flex:none;">
+    <div style="flex:1;min-width:0;">
+     <h3 style="margin:0 0 4px;font-size:16px;">Valeria Bautista</h3>
+     <p style="margin:0 0 8px;color:var(--mu);font-size:13px;">Biomedical engineer student</p>
+     <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
+      <a href="mailto:member1@example.com" class="mono" style="font-size:13px;">vmb.holguin@gmail.com</a>
+      <button class="btn" type="button" style="padding:4px 8px;font-size:11px;" onclick="navigator.clipboard.writeText('member1@example.com');alert('Email copied to clipboard!');">Copy Email</button>
+     </div>
+    </div>
+   </div>
+   <!-- Member 2 -->
+   <div style="display:flex;align-items:center;gap:16px;background:rgba(255,255,255,0.02);border:1px solid var(--ln);padding:16px;border-radius:6px;">
+    <img src="Esdras.png" alt="Member 2" style="width:80px;height:80px;border-radius:50%;object-fit:cover;border:2px solid var(--cy);flex:none;">
+    <div style="flex:1;min-width:0;">
+     <h3 style="margin:0 0 4px;font-size:16px;">Esdras Ortiz</h3>
+     <p style="margin:0 0 8px;color:var(--mu);font-size:13px;">Biomedical engineer student</p>
+     <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
+      <a href="mailto:member2@example.com" class="mono" style="font-size:13px;">esdrasorr0730@gmail.com</a>
+      <button class="btn" type="button" style="padding:4px 8px;font-size:11px;" onclick="navigator.clipboard.writeText('member2@example.com');alert('Email copied to clipboard!');">Copy Email</button>
+     </div>
+    </div>
+   </div>
+  </div>
+ </article>
+</section>
+
 <div class="nt">⚠ PROTOTYPE NOTICE · Fictional, simulated values for demonstration only. Not connected to medical devices; no medical diagnosis or clinical decision support.</div>
 </main></div>
 <script>
@@ -255,6 +295,8 @@ const E={
 /* ---- barra lateral, cabecera del equipo ---- */
 "PHYSIOLOGICAL MONITORING":"MONITOREO FISIOLÓGICO",
 "ASTRA PLATFORM":"PLATAFORMA ASTRA",
+"ASTRA'S TEAM":"EQUIPO DE ASTRA",
+"ASTRA's team":"Equipo de ASTRA",
 "Overview":"Resumen",
 "Crew Monitoring":"Monitoreo de la tripulación",
 "Medical Intelligence":"Inteligencia médica",
@@ -300,6 +342,14 @@ const E={
 "ASTRA PLATFORM / BEYOND SPACE":"PLATAFORMA ASTRA / MÁS ALLÁ DEL ESPACIO",
 "Beyond space: ASTRA for Peru":"Más allá del espacio: ASTRA para el Perú",
 "From astronaut monitoring to accessible care · concept, not an operational application":"Del monitoreo de astronautas a una atención accesible · concepto, no una aplicación operativa",
+"ASTRA / PROJECT TEAM":"ASTRA / EQUIPO DEL PROYECTO",
+"ASTRA's team":"Equipo de ASTRA",
+"Project team members in charge of this project":"Miembros del equipo del proyecto a cargo de este proyecto",
+"Project Team":"Equipo del proyecto",
+"Biomedical engineering students in charge of this project":"Estudiantes de ingeniería biomédica a cargo de este proyecto",
+"Biomedical engineer student":"Estudiante de ingeniería biomédica",
+"Copy Email":"Copiar correo",
+"Email copied to clipboard!":"¡Correo copiado al portapapeles!",
 
 /* ---- tripulación, roles, métricas ---- */
 "Commander":"Comandante","Flight Engineer":"Ingeniero de vuelo","Mission Specialist":"Especialista de misión",
@@ -355,7 +405,7 @@ const E={
 
 /* ---- vitales (tarjetas de cada métrica) ---- */
 "PHYSIOLOGICAL OUTPUTS · 8 CHANNELS BY CLINICAL CATEGORY":"SALIDAS FISIOLÓGICAS · 8 CANALES POR CATEGORÍA CLÍNICA",
-"CARDIOVASCULAR":"CARDIOVASCULAR","RESPIRATORY":"RESPIRATORIO","THERMOREGULATION":"TERMORREGULACIÓN","RECOVERY":"RECUPERACIÓN","PHYSICAL PERFORMANCE":"RENDIMIENTO FÍSICO",
+"CARDIOVASCULAR":"CARDIOVASCULAR","RESPIRATORIO":"RESPIRATORIO","THERMOREGULATION":"TERMORREGULACIÓN","RECOVERY":"RECUPERACIÓN","PHYSICAL PERFORMANCE":"RENDIMIENTO FÍSICO",
 "PREDICTED SCENARIO · +15 min trend":"ESCENARIO PREDICHO · tendencia a +15 min",
 "HISTORY ›":"HISTORIAL ›","LIVE CHART ›":"GRÁFICO EN VIVO ›",
 
@@ -530,7 +580,7 @@ const E={
 "Firefighters (Bomberos)":"Bomberos","Heat and exertion strain, compared with each person’s own baseline.":"Estrés por calor y esfuerzo, comparado con la línea base de cada persona.",
 "Police (PNP)":"Policía (PNP)","Long shifts and tense operations: spot strain before it becomes injury.":"Turnos largos y operativos tensos: detectar el desgaste antes de que se convierta en lesión.",
 "Armed forces":"Fuerzas armadas","Training and deployments in jungle, desert and high altitude.":"Entrenamientos y despliegues en selva, desierto y gran altitud.",
-"Research teams":"Equipos de investigación","Altitude and Amazon studies with consistent, comparable data.":"Estudios de altura y de la Amazonía con datos consistentes y comparables.",
+"Research teams":"Equipos de investigación","Altitude and Amazon studies with consistent, comparable data.":"Estudios de altura y de la Amazonía con datos consistentemente comparables.",
 "Rescue and civil defense":"Rescate y defensa civil","Teams working far from care during quakes, floods and landslides.":"Equipos que trabajan lejos de la atención médica durante sismos, inundaciones y huaicos.",
 "High-altitude workers":"Trabajadores en altura","Mining and mountain crews, where low oxygen and poor sleep are daily risks.":"Cuadrillas mineras y de montaña, donde el poco oxígeno y el mal sueño son riesgos diarios.",
 "Remote communities":"Comunidades remotas","A local health promoter monitors; a doctor far away sees the alerts.":"Un promotor de salud local monitorea; un médico lejano ve las alertas.",
@@ -663,7 +713,7 @@ function walk(root){
  if(root.nodeType===3){fixText(root);return}
  if(root.nodeType!==1)return;
  fixAttrs(root);
- const w=document.createTreeWalker(root,5,{acceptNode:n=>n.nodeType===1&&n.matches(SK)?2:1});
+ const w=document.createTreeWalker(root,5,{acceptNode:n=>n.nodeType==1&&n.matches(SK)?2:1});
  let n;while(n=w.nextNode())n.nodeType===3?fixText(n):fixAttrs(n);
 }
 const obs=new MutationObserver(recs=>{
@@ -734,8 +784,25 @@ x.beginPath();for(let i=0;i<n;i++)i?x.lineTo(X(i),Y(a[i])):x.moveTo(X(i),Y(a[i])
 x.beginPath();for(let i=0;i<n;i++)i?x.lineTo(X(i),Y(a[i])):x.moveTo(X(i),Y(a[i]));x.strokeStyle=cy;x.lineWidth=2.4;x.stroke();x.shadowBlur=0;
 if(pj){x.beginPath();x.setLineDash([5,5]);for(let i=n-1;i<a.length;i++)i>n-1?x.lineTo(X(i),Y(a[i])):x.moveTo(X(i),Y(a[i]));x.strokeStyle='#d28b0f';x.stroke();x.setLineDash([])}
 x.beginPath();x.arc(X(n-1),Y(a[n-1]),4,0,7);x.fillStyle=cy;x.fill();x.fillStyle='#6b7f8d';x.fillText(TR(lb[0]),P.l,h-6);x.fillText(TR(lb[1]),w-P.r-x.measureText(TR(lb[1])).width,h-6)}
-const H={overview:['MISSION CONTROL / HEALTH TELEMETRY','Crew health overview','Real-time astronaut wellness monitoring · Artemis research simulation'],vitals:['BIOMETRIC PANEL / 8 TELEMETRY CHANNELS','Vital signs','Eight medical metrics linked to NASA reference datasets'],history:['ANALYTICS / TRENDS','Health history','Daily trends and statistics for the last 30 days'],crew:['CREW / PERSONNEL','Crew profile','Baseline, current status and wellness radar'],alerts:['BIO-ALERTS / EVENTS','Alerts & events','Notifications generated from telemetry thresholds'],settings:['SYSTEM / CONFIGURATION','System settings','Simulation, display and calibration controls'],sources:['NASA REFERENCES / DATA PROVENANCE','NASA sources','39 linked references, verified facts and the real BEDREST0543 dataset']};
-function go(v){view=v;$$('.view').forEach(s=>s.classList.toggle('on',s.id==='v-'+v));$$('.nav').forEach(b=>b.classList.toggle('on',b.dataset.v===v));[$('#eb').textContent,$('#h1').textContent,$('#sub').textContent]=[0,0,0];const h=H[v];$('#eb').textContent=h[0];$('#h1').textContent=h[1];$('#sub').textContent=h[2];scrollTo(0,0);if(v==='sources')rSrc();rAll()}
+const H={overview:['MISSION CONTROL / HEALTH TELEMETRY','Crew health overview','Real-time astronaut wellness monitoring · Artemis research simulation'],vitals:['BIOMETRIC PANEL / 8 TELEMETRY CHANNELS','Vital signs','Eight medical metrics linked to NASA reference datasets'],history:['ANALYTICS / TRENDS','Health history','Daily trends and statistics for the last 30 days'],crew:['CREW / PERSONNEL','Crew profile','Baseline, current status and wellness radar'],alerts:['BIO-ALERTS / EVENTS','Alerts & events','Notifications generated from telemetry thresholds'],settings:['SYSTEM / CONFIGURATION','System settings','Simulation, display and calibration controls'],sources:['NASA REFERENCES / DATA PROVENANCE','NASA sources','39 linked references, verified facts and the real BEDREST0543 dataset'],team:['ASTRA / PROJECT TEAM','ASTRA\'s team','Project team members in charge of this project']};
+function go(v){
+ view=v;
+ $$('.view').forEach(s=>s.classList.toggle('on',s.id==='v-'+v));
+ $$('.nav').forEach(b=>b.classList.toggle('on',b.dataset.v===v));
+ [$('#eb').textContent,$('#h1').textContent,$('#sub').textContent]=[0,0,0];
+ const h=H[v];
+ $('#eb').textContent=h[0];
+ $('#h1').textContent=h[1];
+ $('#sub').textContent=h[2];
+ 
+ // Display select #cs only when 'Crew Monitoring' tab (crew) is active
+ const cs=$('#cs');
+ if(cs) cs.style.display=(v==='crew')?'inline-block':'none';
+ 
+ scrollTo(0,0);
+ if(v==='sources')rSrc();
+ rAll();
+}
 function rAll(){const s=S[cu],w=worst(cu);$('#cards').innerHTML=M.map(([k,n,,u,lo,hi,,i])=>{const q=st(k,s.cur[k]);return`<button class="card${k===mk?' sel':''}" data-k="${k}"><div class="sh"><span>${n.toUpperCase()}</span><b>${i}</b></div><div class="sv mono">${fv(k,s.cur[k])} <small>${u}</small></div><div class="sf ${cls[q]}">● ${lbl[q]} <span>· ref ${lo}–${hi}</span></div></button>`}).join('');
 const m=MK[mk];$('#leg').textContent=m[1];line($('#cv'),s.hist[mk],m[6],1,['60 min ago','+15 min'],C[cu].b[mk]);
 const OV={ok:['NOMINAL','No significant deviations detected'],wn:['WATCH','Minor deviations — monitor closely'],bd:['ALERT','Out-of-range indicator — review recommended']},rd=ready(cu),SY=[['Cardiovascular',['hr','hrv','bp']],['Respiratory',['spo2','rr']],['Thermoregulation',['temp']],['Sleep & recovery',['sleep']],['Physical conditioning',['act']]];
@@ -760,7 +827,7 @@ function rSrc(){$('#nF').textContent=FACTS.length+' FACTS';$('#facts').innerHTML
 $('#bed').innerHTML=[['Package','15 CSV files · md5 15/15 match'],['Subjects','32 codes · dosing test 30 (20 M, 10 F)'],['Rows','2,425 across all files'],['Bed-rest days','0–64 hormones · 0–90 vascular · −5…88 dosing'],['Cortisol (real)','median 14.3 µg/dl · range 2.8–34.5'],['ACTH (real)','median 29.1 pg/ml · range 7.4–343'],['Limits','No sleep, activity, SpO₂, temperature or daily HR; cardiovascular units not stated in file'],['Rule','Label as bed-rest data (2005–2010), never as current astronaut data']].map(([a,b])=>`<div class="row"><span>${a}</span><strong style="text-align:right;font-weight:600">${b}</strong></div>`).join('');
 $('#rc').innerHTML=['ALL',...CT].map((c,i)=>`<button class="tag${rcat===i-1?' on':''}" data-rc="${i-1}">${c.toUpperCase()}</button>`).join('');
 $('#rl').innerHTML=`<div class="sf" style="margin:0 0 8px"><b class="good">${Object.keys(OP).length} read</b> · ${RF.length-Object.keys(OP).length} in review (listed in the research file, not read yet)</div>`+RF.filter(r=>rcat<0||r[1]===rcat).map(([id,c,ti,u,p])=>{const o=OP[id]||'LINK',cl=o==='FULL'?'good':o==='PARTIAL'?'warn':o==='RESTRICTED'?'bad':'';return`<div class="row"><span>#${id} · ${ti}</span><span><b class="tag ${cl}">${o==='LINK'?'IN REVIEW':o}</b> <b class="tag">P${p}</b> <a href="${u[0]==='~'?N+u.slice(1):u}" target="_blank" rel="noopener">open ›</a></span></div>`}).join('')}
-function rAlerts(){$('#flt').innerHTML=[['all','ALL'],['bd','CRITICAL'],['wn','WARNING'],['info','INFO']].map(([f,l])=>`<button class="tag${flt===f?' on':''}" data-f="${f}">${l}</button>`).join('');const l=A.map((a,i)=>[a,i]).filter(([a])=>flt==='all'||a.t===flt||(flt==='info'&&a.t==='ok'));$('#alAll').innerHTML=l.length?l.map(([a,i])=>alH(a,i)).join(''):'<div class="sub">No events in this category.</div>'}
+function rAlerts(){$('#flt').innerHTML=[['all','ALL'],['bd','CRITICAL'],['wn','WARNING'],['info','INFO']].map(([f,l])=>`<button class="tag${flt===f?' on':''}" data-f="${f}">${l}</button>`).join('');const l=A.map((a,i)=>[a,i]).filter(([a])=>flt==='all'||a.t==='inf'||(flt==='info'&&a.t==='ok'));$('#alAll').innerHTML=l.length?l.map(([a,i])=>alH(a,i)).join(''):'<div class="sub">No events in this category.</div>'}
 function pick(i){cu=i;$('#cs').value=i;rAll()}
 function restart(){clearInterval(tm);if($('#tLive').checked)tm=setInterval(tick,iv);const l=$('#live'),on=$('#tLive').checked;l.textContent=on?'● SIMULATION LIVE':'❚❚ SIMULATION PAUSED';l.classList.toggle('off',!on)}
 function tick(){S.forEach((s,i)=>{M.forEach(([k,,,,lo,hi])=>{const b=C[i].b[k],j=(hi-lo)*.04,v=s.cur[k]+R(-j,j)+(b-s.cur[k])*.25;s.cur[k]=v;s.hist[k].push(v);s.hist[k].shift()});chk(i)});rAll()}
